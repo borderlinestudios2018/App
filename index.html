@@ -3,140 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Border Line (Borderline Studio) | スマートフォンアプリ企画・開発スタジオ</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Noto Sans JP -->
+    <title>Border Line（ボーダーラインスタジオ） | アプリ制作・ゲーム開発</title>
+    <meta name="description" content="アプリ制作スタジオ「Border Line（ボーダーラインスタジオ）」の公式サイト。好評配信中のスマートフォンアプリ『昭和レトロ 10円ゲームコーナー』のご紹介およびプライバシーポリシーを掲載しています。">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        display: ['"Outfit"', '"Noto Sans JP"', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            blue: '#587AC2',      // ロゴの上半分ブルーに調和する色
-                            darkBlue: '#3A5898',
-                            lightBlue: '#EEF3FC',
-                            retroRed: '#D9534F',  // 昭和レトロゲームのアクセント
-                            retroGold: '#D4A03D', // 10円玉・電飾のゴールド
-                            retroGreen: '#2E6B5E' // 筐体のレトロな深緑
+                            blue: '#5B7DB8',
+                            dark: '#141820',
+                            light: '#F4F7FC',
+                            sky: '#E3EEFC',
+                            accent: '#3F62A0'
+                        },
+                        retro: {
+                            gold: '#C9933B',
+                            cream: '#F5E6C4',
+                            green: '#2E6B5E',
+                            red: '#B83A3A'
                         }
                     },
-                    animation: {
-                        'float': 'float 4s ease-in-out infinite',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-8px)' },
-                        }
+                    boxShadow: {
+                        'hard': '4px 4px 0px #141820',
+                        'hard-lg': '8px 8px 0px #141820',
+                        'hard-blue': '6px 6px 0px #5B7DB8',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* カスタムスタイル：Border Lineの「境界線」アイデンティティ表現 */
-        body {
-            font-family: 'Inter', 'Noto Sans JP', sans-serif;
-            color: #1E293B;
-            background-color: #F8FAFC;
+        .bg-grid-pattern {
+            background-image: radial-gradient(#5B7DB8 1px, transparent 1px);
+            background-size: 24px 24px;
         }
-
-        /* ヒーローセクションの青と白の境界線背景 */
-        .hero-split-bg {
-            background: linear-gradient(180deg, #587AC2 0%, #4A6BB3 54%, #FFFFFF 54.3%, #F8FAFC 100%);
-        }
-
-        /* ロゴの視認性を高める白縁・ドロップシャドウ補助 */
-        .logo-shadow {
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
-        }
-
-        /* ガラスモーフィズムヘッダー */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        /* レトロ筐体風フレームアクセント */
-        .retro-card-border {
-            box-shadow: 0 20px 40px -15px rgba(30, 41, 59, 0.12), 0 0 0 1px rgba(88, 122, 194, 0.15);
+        .border-line-split {
+            background: linear-gradient(180deg, #EBF2FC 0%, #D9E8FB 100%);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-blue selection:text-white">
+<body class="font-sans text-brand-dark bg-white antialiased selection:bg-brand-blue selection:text-white">
 
-    <!-- ==================== 1. ヘッダー・ナビゲーション ==================== -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-200/80 transition-all duration-300">
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-brand-dark">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 sm:h-20">
-                <!-- 左上：メーカーロゴ
-                <a href="#" class="flex items-center gap-3 group focus:outline-none">
-                    <img src="/images/borderLine_Logo00.png" 
-                         alt="Border Line ロゴ" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/220x52/587AC2/ffffff?text=Border+Line';"
-                         class="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="/images/borderLine_Logo00.png" alt="Border Line" class="h-8 sm:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-105">
                 </a>
-                 -->
 
-                <!-- PC用ナビゲーション -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#apps" class="text-sm font-bold tracking-wider text-slate-700 hover:text-brand-blue transition-colors py-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-blue hover:after:w-full after:transition-all">
-                        APPS
-                        <span class="block text-[10px] font-normal text-slate-400">アプリ紹介</span>
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#apps" class="font-display font-bold text-sm tracking-wider text-brand-dark hover:text-brand-blue transition-colors flex flex-col items-center">
+                        <span>APPS</span>
+                        <span class="text-[10px] font-sans font-normal text-gray-500">アプリ紹介</span>
                     </a>
-                    <a href="#about" class="text-sm font-bold tracking-wider text-slate-700 hover:text-brand-blue transition-colors py-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-blue hover:after:w-full after:transition-all">
-                        ABOUT
-                        <span class="block text-[10px] font-normal text-slate-400">スタジオ概要</span>
+                    <a href="#about" class="font-display font-bold text-sm tracking-wider text-brand-dark hover:text-brand-blue transition-colors flex flex-col items-center">
+                        <span>ABOUT</span>
+                        <span class="text-[10px] font-sans font-normal text-gray-500">スタジオ概要</span>
                     </a>
-                    <a href="#privacy" class="text-sm font-bold tracking-wider text-slate-700 hover:text-brand-blue transition-colors py-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-blue hover:after:w-full after:transition-all">
-                        PRIVACY POLICY
-                        <span class="block text-[10px] font-normal text-slate-400">プライバシーポリシー</span>
+                    <a href="#privacy" class="font-display font-bold text-sm tracking-wider text-brand-dark hover:text-brand-blue transition-colors flex flex-col items-center">
+                        <span>PRIVACY POLICY</span>
+                        <span class="text-[10px] font-sans font-normal text-gray-500">プライバシーポリシー</span>
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-darkBlue text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
-                        <i class="fa-brands fa-google-play"></i>
+                    <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-accent text-white font-bold text-xs px-4 py-2.5 rounded-lg border-2 border-brand-dark shadow-hard transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                        <i class="fa-brands fa-google-play text-sm"></i>
                         <span>Google Play</span>
                     </a>
                 </nav>
 
-                <!-- モバイル用ハンバーガーメニューボタン -->
-                <button id="mobile-menu-btn" aria-label="メニューを開く" class="md:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none transition-colors">
-                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" type="button" class="md:hidden p-2 rounded-lg border-2 border-brand-dark text-brand-dark hover:bg-brand-light focus:outline-none" aria-label="メニューを開く">
+                    <i class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
 
-        <!-- モバイル用ドロップダウンメニュー -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 shadow-lg">
-            <div class="px-4 pt-3 pb-6 space-y-2">
-                <a href="#apps" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-800 hover:bg-brand-lightBlue hover:text-brand-blue transition-colors">
-                    APPS <span class="text-xs font-normal text-slate-500 ml-2">アプリ紹介</span>
+        <!-- Mobile Nav Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t-2 border-brand-dark">
+            <div class="px-4 pt-3 pb-5 space-y-2">
+                <a href="#apps" class="block px-3 py-2.5 rounded-lg font-bold text-brand-dark hover:bg-brand-light">
+                    APPS <span class="text-xs font-normal text-gray-500 ml-2">アプリ紹介</span>
                 </a>
-                <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-800 hover:bg-brand-lightBlue hover:text-brand-blue transition-colors">
-                    ABOUT <span class="text-xs font-normal text-slate-500 ml-2">スタジオ概要</span>
+                <a href="#about" class="block px-3 py-2.5 rounded-lg font-bold text-brand-dark hover:bg-brand-light">
+                    ABOUT <span class="text-xs font-normal text-gray-500 ml-2">スタジオ概要</span>
                 </a>
-                <a href="#privacy" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-800 hover:bg-brand-lightBlue hover:text-brand-blue transition-colors">
-                    PRIVACY POLICY <span class="text-xs font-normal text-slate-500 ml-2">プライバシーポリシー</span>
+                <a href="#privacy" class="block px-3 py-2.5 rounded-lg font-bold text-brand-dark hover:bg-brand-light">
+                    PRIVACY POLICY <span class="text-xs font-normal text-gray-500 ml-2">プライバシーポリシー</span>
                 </a>
-                <div class="pt-2 px-2">
-                    <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="flex items-center justify-center gap-2 w-full bg-brand-blue text-white font-bold py-3 px-4 rounded-xl shadow">
+                <div class="pt-2">
+                    <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full bg-brand-blue text-white font-bold text-sm px-4 py-3 rounded-lg border-2 border-brand-dark shadow-hard">
                         <i class="fa-brands fa-google-play"></i>
                         <span>Google Play でアプリを見る</span>
                     </a>
@@ -145,123 +118,85 @@
         </div>
     </header>
 
-    <!-- ==================== 2. ヒーローセクション ==================== -->
-    <section class="relative pt-28 sm:pt-36 pb-20 sm:pb-28 hero-split-bg overflow-hidden">
-        <!-- 装飾用グリッドパターン（上部ブルー領域） -->
-        <div class="absolute inset-x-0 top-0 h-[54%] opacity-15 pointer-events-none" 
-             style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;">
-        </div>
+    <!-- Hero Section（説明文の下端まで水色背景でカバー） -->
+    <section class="relative overflow-hidden border-b-2 border-brand-dark border-line-split">
+        <!-- Subtle dot background -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.15] pointer-events-none"></div>
 
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto">
-                <!-- バッジ -->
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 text-white text-xs sm:text-sm font-semibold mb-6">
-                    <span class="w-2 h-2 rounded-full bg-amber-300 animate-ping"></span>
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20 text-center">
+            <div class="max-w-4xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border-2 border-brand-dark text-xs font-bold tracking-wider mb-6 shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand-blue inline-block"></span>
                     <span>BORDERLINE STUDIO OFFICIAL SITE</span>
                 </div>
 
-                <div class="flex justify-center mb-5">
-                    <img src="/images/borderLine_Logo00.png" 
-                         alt="Border Line ロゴ" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/320x76/587AC2/ffffff?text=Border+Line';"
-                         class="h-14 sm:h-20 w-auto object-contain logo-shadow">
+                <!-- Main Logo Display -->
+                <div class="mb-6 flex justify-center">
+                    <img src="/images/borderLine_Logo00.png" alt="Border Line ロゴ" class="h-14 sm:h-20 md:h-24 w-auto object-contain drop-shadow-sm">
                 </div>
 
-                
-                <!-- メインキャッチコピー -->
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-5 drop-shadow-sm">
-                    懐かしさと新しさの「境界線」。
+                <!-- 「境界」「境界線」が途中で改行されないように制御 -->
+                <h1 class="font-black tracking-tight text-brand-dark leading-snug mb-6 text-[clamp(1.35rem,4.2vw,2.75rem)]">
+                    <span class="inline-block whitespace-nowrap">懐かしさと新しさの</span><span class="inline-block whitespace-nowrap text-brand-blue">「境界線」。</span>
                 </h1>
 
-                <p class="text-blue-50 text-sm sm:text-lg font-medium leading-relaxed mb-10 px-2">
+                <p class="text-sm sm:text-base md:text-lg text-gray-800 font-medium max-w-2xl mx-auto leading-relaxed">
                     Border Line（ボーダーラインスタジオ）は、世代を超えて愛される遊び心と、<br class="hidden sm:inline">
                     スマートフォンならではの心地よい操作感を融合させたゲームアプリを制作しています。
                 </p>
             </div>
-
-            <!-- 境界線（ボーダーライン）を跨ぐスタジオロゴ＆クイックナビゲーションカード
-            <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-10 retro-card-border border-2 border-slate-900/10 text-center">
-                <div class="flex justify-center mb-5">
-                    <img src="/images/borderLine_Logo00.png" 
-                         alt="Border Line ロゴ" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/320x76/587AC2/ffffff?text=Border+Line';"
-                         class="h-14 sm:h-20 w-auto object-contain logo-shadow">
-                </div>
-                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto mb-7">
-                    誰もが直感的に楽しめるシンプルで奥深いゲーム体験を、日々のスキマ時間にお届けします。
-                </p>
-                <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-                    <a href="#apps" class="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-darkBlue text-white font-bold py-3 px-6 rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm">
-                        <i class="fa-solid fa-gamepad"></i>
-                        <span>アプリ紹介を見る</span>
-                    </a>
-                    <a href="#about" class="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3 px-6 rounded-full transition-colors text-sm">
-                        <span>スタジオ概要</span>
-                    </a>
-                    <a href="#privacy" class="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-3 px-6 rounded-full transition-colors text-sm">
-                        <span>プライバシーポリシー</span>
-                    </a>
-                </div>
-            </div> -->
         </div>
     </section>
 
-    <!-- ==================== 3. APPS（アプリ紹介セクション） ==================== -->
-    <section id="apps" class="py-16 sm:py-24 bg-white border-t border-slate-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- セクション見出し -->
-            <div class="text-center mb-12 sm:mb-16">
-                <span class="text-brand-blue font-extrabold text-xs sm:text-sm tracking-widest uppercase">OUR APPLICATION</span>
-                <h2 class="text-2xl sm:text-4xl font-black text-slate-900 mt-1">アプリ紹介</h2>
-                <div class="w-16 h-1.5 mx-auto mt-4 rounded-full overflow-hidden flex">
-                    <div class="w-1/2 bg-brand-blue"></div>
-                    <div class="w-1/2 bg-slate-300"></div>
+    <!-- Apps Section -->
+    <section id="apps" class="py-16 sm:py-24 bg-white border-b-2 border-brand-dark">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-12 sm:mb-14">
+                <span class="font-display font-extrabold text-brand-blue tracking-widest text-xs sm:text-sm uppercase block mb-2">OUR APPLICATION</span>
+                <h2 class="text-2xl sm:text-4xl font-black text-brand-dark">APPS（アプリ紹介）</h2>
+                <div class="mt-4 flex justify-center items-center gap-1.5">
+                    <div class="w-8 h-1.5 bg-brand-blue rounded-full"></div>
+                    <div class="w-3 h-1.5 bg-brand-dark rounded-full"></div>
                 </div>
             </div>
 
-            <!-- ヒーローから移動したメインアプリ紹介カード -->
-            <div class="max-w-5xl mx-auto bg-white rounded-3xl p-5 sm:p-8 lg:p-10 retro-card-border border-2 border-slate-900/10 mb-14">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center">
-                    <!-- 左：アプリバナープレビュー -->
-                    <div class="md:col-span-7">
-                        <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-200 group">
-                            <img src="/images/bl11_header00.png" 
-                                 alt="昭和レトロ 10円ゲームコーナー メインビジュアル" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/800x400/2E6B5E/F5E6C4?text=昭和レトロ+10円ゲームコーナー';"
-                                 class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500">
+            <!-- Main App Card -->
+            <div class="bg-brand-light rounded-2xl border-2 border-brand-dark shadow-hard-lg overflow-hidden mb-16 sm:mb-20">
+                <div class="grid grid-cols-1 lg:grid-cols-12">
+                    <!-- Left: Banner Image -->
+                    <div class="lg:col-span-7 bg-brand-dark flex items-center justify-center p-4 sm:p-6 border-b-2 lg:border-b-0 lg:border-r-2 border-brand-dark">
+                        <div class="w-full rounded-xl overflow-hidden border-2 border-white/20 shadow-lg">
+                            <img src="/images/bl11_header00.png" alt="昭和レトロ 10円ゲームコーナー メインビジュアル" class="w-full h-auto object-cover block">
                         </div>
                     </div>
 
-                    <!-- 右：アプリアイコン＆ダウンロードCTA -->
-                    <div class="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
-                        <div class="flex items-center gap-4 mb-4">
-                            <img src="/images/bl11_iconStore00.png" 
-                                 alt="昭和レトロ 10円ゲームコーナー アプリアイコン" 
-                                 onerror="this.onerror=null; this.src='https://placehold.co/120x120/D4A03D/ffffff?text=10円';"
-                                 class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shadow-md border border-slate-200 animate-float">
-                            <div>
-                                <span class="inline-block px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-800 text-xs font-bold mb-1">
-                                    好評配信中 / Android 無料
-                                </span>
-                                <h3 class="text-lg sm:text-xl font-black text-slate-900 leading-snug">
-                                    昭和レトロ<br>10円ゲームコーナー
-                                </h3>
+                    <!-- Right: App Info -->
+                    <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between bg-white">
+                        <div>
+                            <div class="flex items-center gap-4 mb-5">
+                                <img src="/images/bl11_iconStore00.png" alt="昭和レトロ 10円ゲームコーナー アプリアイコン" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border-2 border-brand-dark shadow-hard shrink-0 bg-white">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 text-[11px] font-bold bg-retro-cream text-brand-dark border border-brand-dark rounded mb-1.5">
+                                        好評配信中 / Android 無料
+                                    </span>
+                                    <h3 class="text-xl sm:text-2xl font-black text-brand-dark leading-snug">
+                                        昭和レトロ<br>10円ゲームコーナー
+                                    </h3>
+                                </div>
                             </div>
+
+                            <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-6">
+                                昭和の時代・・・スーパーのゲームコーナーや駄菓子屋に置かれていた昔懐かしの10円ゲーム筐体風のゲームが無料で遊べます。
+                            </p>
                         </div>
 
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                            昭和の時代・・・スーパーのゲームコーナーや駄菓子屋に置かれていた昔懐かしの10円ゲーム筐体風のゲームが無料で遊べます。
-                        </p>
-
-                        <div class="w-full">
-                            <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="w-full inline-flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
-                                <i class="fa-brands fa-google-play text-xl text-emerald-400"></i>
+                        <div class="pt-4 border-t border-gray-200">
+                            <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-3 bg-brand-blue hover:bg-brand-accent text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-xl border-2 border-brand-dark shadow-hard transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                                <i class="fa-brands fa-google-play text-xl"></i>
                                 <div class="text-left">
-                                    <span class="block text-[10px] uppercase tracking-wider text-slate-300 leading-none">GET IT ON</span>
-                                    <span class="text-sm sm:text-base font-extrabold leading-tight">Google Play で入手</span>
+                                    <span class="block text-[10px] font-display tracking-wider opacity-90 leading-none">GET IT ON</span>
+                                    <span class="block font-bold leading-tight">Google Play で入手</span>
                                 </div>
                             </a>
                         </div>
@@ -269,275 +204,207 @@
                 </div>
             </div>
 
-            <!-- 収録筐体ラインナップ（7機種＋追加用テンプレート構造） -->
-            <div class="max-w-5xl mx-auto">
-                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200 gap-2">
+            <!-- 収録筐体紹介セクション -->
+            <div>
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b-2 border-brand-dark pb-4 mb-8 gap-2">
                     <div>
-                        <span class="text-brand-retroRed font-extrabold text-xs tracking-widest uppercase">ARCADE MACHINES LINEUP</span>
-                        <h3 class="text-xl sm:text-2xl font-black text-slate-900 mt-1 flex items-center gap-2.5">
-                            <i class="fa-solid fa-coins text-brand-retroGold"></i>
+                        <span class="font-display font-bold text-xs tracking-widest text-brand-blue uppercase block mb-1">ARCADE MACHINES LINEUP</span>
+                        <h3 class="text-xl sm:text-2xl font-black text-brand-dark flex items-center gap-2.5">
+                            <i class="fa-solid fa-gamepad text-brand-blue"></i>
                             <span>収録筐体ラインナップ</span>
                         </h3>
                     </div>
-                    <p class="text-xs sm:text-sm text-slate-500">
+                    <p class="text-xs sm:text-sm text-gray-600 font-medium">
                         ゲーム内でプレイできる個性豊かなレトロ筐体のご紹介
                     </p>
                 </div>
 
-                <!-- 筐体カードグリッド（新しい筐体を追加する際は、以下の <article> ブロックをコピーして追加してください） -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 筐体カード一覧（画像枠＋説明文枠） -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-                    <!-- 筐体1：高速鉄道ゲーム -->
-                    <article class="bg-slate-50 rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col">
-                        <!-- 筐体画像エリア（画像を差し替える場合は img タグの src を変更してください） -->
-                        <div class="relative aspect-[4/3] bg-gradient-to-b from-emerald-900 to-slate-900 p-3 flex items-center justify-center border-b-4 border-amber-500/80">
-                            <img src="https://placehold.co/600x450/2E6B5E/F5E6C4?text=高速鉄道ゲーム+画像枠" 
-                                 alt="高速鉄道ゲーム 筐体画像" 
-                                 class="w-full h-full object-cover rounded-xl border border-white/20">
-                            <span class="absolute top-5 left-5 px-2.5 py-0.5 rounded-md bg-slate-950/75 text-amber-300 text-[11px] font-bold tracking-wider backdrop-blur-xs">
+                    <!-- 1. 高速鉄道ゲーム -->
+                    <article class="bg-white rounded-2xl border-2 border-brand-dark shadow-hard overflow-hidden flex flex-col">
+                        <div class="relative aspect-[4/3] bg-brand-light border-b-2 border-brand-dark overflow-hidden">
+                            <img src="https://placehold.co/600x450/2E6B5E/F5E6C4?text=高速鉄道ゲーム+画像枠" alt="高速鉄道ゲーム 筐体画像" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-brand-dark text-white font-display font-bold text-xs px-2.5 py-1 rounded">
                                 NO.01
                             </span>
                         </div>
-                        <!-- 筐体タイトル・説明文エリア -->
-                        <div class="p-5 flex-1 flex flex-col">
-                            <h4 class="text-lg font-black text-slate-900 mb-2 flex items-center gap-2">
-                                <span class="w-1.5 h-5 bg-brand-retroGreen rounded-full shrink-0"></span>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-brand-dark mb-2.5 flex items-center gap-2">
+                                <span class="w-2 h-5 bg-brand-blue rounded-sm inline-block shrink-0"></span>
                                 <span>高速鉄道ゲーム</span>
                             </h4>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-1">
-                                <!-- 【編集用】ここに「高速鉄道ゲーム」の説明文を入力してください -->
+                            <p class="text-sm text-gray-700 leading-relaxed flex-1">
                                 10円玉を弾いてゴールを目指す王道の鉄道ゲーム筐体です。途中の落とし穴をうまく回避しながら終着駅を目指しましょう。（※説明文をここに入力）
                             </p>
                         </div>
                     </article>
 
-                    <!-- 筐体2：ベースボールスラッガー -->
-                    <article class="bg-slate-50 rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col">
-                        <!-- 筐体画像エリア -->
-                        <div class="relative aspect-[4/3] bg-gradient-to-b from-red-900 to-slate-900 p-3 flex items-center justify-center border-b-4 border-amber-500/80">
-                            <img src="https://placehold.co/600x450/8B2626/F5E6C4?text=ベースボールスラッガー+画像枠" 
-                                 alt="ベースボールスラッガー 筐体画像" 
-                                 class="w-full h-full object-cover rounded-xl border border-white/20">
-                            <span class="absolute top-5 left-5 px-2.5 py-0.5 rounded-md bg-slate-950/75 text-amber-300 text-[11px] font-bold tracking-wider backdrop-blur-xs">
+                    <!-- 2. ベースボールスラッガー -->
+                    <article class="bg-white rounded-2xl border-2 border-brand-dark shadow-hard overflow-hidden flex flex-col">
+                        <div class="relative aspect-[4/3] bg-brand-light border-b-2 border-brand-dark overflow-hidden">
+                            <img src="https://placehold.co/600x450/8B2626/F5E6C4?text=ベースボールスラッガー+画像枠" alt="ベースボールスラッガー 筐体画像" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-brand-dark text-white font-display font-bold text-xs px-2.5 py-1 rounded">
                                 NO.02
                             </span>
                         </div>
-                        <!-- 筐体タイトル・説明文エリア -->
-                        <div class="p-5 flex-1 flex flex-col">
-                            <h4 class="text-lg font-black text-slate-900 mb-2 flex items-center gap-2">
-                                <span class="w-1.5 h-5 bg-brand-retroRed rounded-full shrink-0"></span>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-brand-dark mb-2.5 flex items-center gap-2">
+                                <span class="w-2 h-5 bg-brand-blue rounded-sm inline-block shrink-0"></span>
                                 <span>ベースボールスラッガー</span>
                             </h4>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-1">
-                                <!-- 【編集用】ここに「ベースボールスラッガー」の説明文を入力してください -->
+                            <p class="text-sm text-gray-700 leading-relaxed flex-1">
                                 タイミングよくレバーを弾いてヒットやホームランを狙う野球盤風ゲーム筐体です。（※説明文をここに入力）
                             </p>
                         </div>
                     </article>
 
-                    <!-- 筐体3：アンデッド -->
-                    <article class="bg-slate-50 rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col">
-                        <!-- 筐体画像エリア -->
-                        <div class="relative aspect-[4/3] bg-gradient-to-b from-purple-950 to-slate-900 p-3 flex items-center justify-center border-b-4 border-amber-500/80">
-                            <img src="https://placehold.co/600x450/3B234A/F5E6C4?text=アンデッド+画像枠" 
-                                 alt="アンデッド 筐体画像" 
-                                 class="w-full h-full object-cover rounded-xl border border-white/20">
-                            <span class="absolute top-5 left-5 px-2.5 py-0.5 rounded-md bg-slate-950/75 text-amber-300 text-[11px] font-bold tracking-wider backdrop-blur-xs">
+                    <!-- 3. アンデッド -->
+                    <article class="bg-white rounded-2xl border-2 border-brand-dark shadow-hard overflow-hidden flex flex-col">
+                        <div class="relative aspect-[4/3] bg-brand-light border-b-2 border-brand-dark overflow-hidden">
+                            <img src="https://placehold.co/600x450/3B234A/F5E6C4?text=アンデッド+画像枠" alt="アンデッド 筐体画像" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-brand-dark text-white font-display font-bold text-xs px-2.5 py-1 rounded">
                                 NO.03
                             </span>
                         </div>
-                        <!-- 筐体タイトル・説明文エリア -->
-                        <div class="p-5 flex-1 flex flex-col">
-                            <h4 class="text-lg font-black text-slate-900 mb-2 flex items-center gap-2">
-                                <span class="w-1.5 h-5 bg-purple-700 rounded-full shrink-0"></span>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-brand-dark mb-2.5 flex items-center gap-2">
+                                <span class="w-2 h-5 bg-brand-blue rounded-sm inline-block shrink-0"></span>
                                 <span>アンデッド</span>
                             </h4>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-1">
-                                <!-- 【編集用】ここに「アンデッド」の説明文を入力してください -->
+                            <p class="text-sm text-gray-700 leading-relaxed flex-1">
                                 不気味でスリリングな演出が魅力のホラーテイスト筐体です。（※説明文をここに入力）
                             </p>
                         </div>
                     </article>
 
-                    <!-- 筐体4：メテオストッパー -->
-                    <article class="bg-slate-50 rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col">
-                        <!-- 筐体画像エリア -->
-                        <div class="relative aspect-[4/3] bg-gradient-to-b from-indigo-950 to-slate-900 p-3 flex items-center justify-center border-b-4 border-amber-500/80">
-                            <img src="https://placehold.co/600x450/1E2959/F5E6C4?text=メテオストッパー+画像枠" 
-                                 alt="メテオストッパー 筐体画像" 
-                                 class="w-full h-full object-cover rounded-xl border border-white/20">
-                            <span class="absolute top-5 left-5 px-2.5 py-0.5 rounded-md bg-slate-950/75 text-amber-300 text-[11px] font-bold tracking-wider backdrop-blur-xs">
+                    <!-- 4. メテオストッパー -->
+                    <article class="bg-white rounded-2xl border-2 border-brand-dark shadow-hard overflow-hidden flex flex-col">
+                        <div class="relative aspect-[4/3] bg-brand-light border-b-2 border-brand-dark overflow-hidden">
+                            <img src="https://placehold.co/600x450/1E2959/F5E6C4?text=メテオストッパー+画像枠" alt="メテオストッパー 筐体画像" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-brand-dark text-white font-display font-bold text-xs px-2.5 py-1 rounded">
                                 NO.04
                             </span>
                         </div>
-                        <!-- 筐体タイトル・説明文エリア -->
-                        <div class="p-5 flex-1 flex flex-col">
-                            <h4 class="text-lg font-black text-slate-900 mb-2 flex items-center gap-2">
-                                <span class="w-1.5 h-5 bg-indigo-600 rounded-full shrink-0"></span>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-brand-dark mb-2.5 flex items-center gap-2">
+                                <span class="w-2 h-5 bg-brand-blue rounded-sm inline-block shrink-0"></span>
                                 <span>メテオストッパー</span>
                             </h4>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-1">
-                                <!-- 【編集用】ここに「メテオストッパー」の説明文を入力してください -->
+                            <p class="text-sm text-gray-700 leading-relaxed flex-1">
                                 迫りくる隕石を食い止めるSFアクション風のレトロ筐体です。（※説明文をここに入力）
                             </p>
                         </div>
                     </article>
 
-                    <!-- 筐体5：ミニキャノンボーイ -->
-                    <article class="bg-slate-50 rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col">
-                        <!-- 筐体画像エリア -->
-                        <div class="relative aspect-[4/3] bg-gradient-to-b from-amber-900 to-slate-900 p-3 flex items-center justify-center border-b-4 border-amber-500/80">
-                            <img src="https://placehold.co/600x450/784418/F5E6C4?text=ミニキャノンボーイ+画像枠" 
-                                 alt="ミニキャノンボーイ 筐体画像" 
-                                 class="w-full h-full object-cover rounded-xl border border-white/20">
-                            <span class="absolute top-5 left-5 px-2.5 py-0.5 rounded-md bg-slate-950/75 text-amber-300 text-[11px] font-bold tracking-wider backdrop-blur-xs">
+                    <!-- 5. ミニキャノンボーイ -->
+                    <article class="bg-white rounded-2xl border-2 border-brand-dark shadow-hard overflow-hidden flex flex-col">
+                        <div class="relative aspect-[4/3] bg-brand-light border-b-2 border-brand-dark overflow-hidden">
+                            <img src="https://placehold.co/600x450/784418/F5E6C4?text=ミニキャノンボーイ+画像枠" alt="ミニキャノンボーイ 筐体画像" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-brand-dark text-white font-display font-bold text-xs px-2.5 py-1 rounded">
                                 NO.05
                             </span>
                         </div>
-                        <!-- 筐体タイトル・説明文エリア -->
-                        <div class="p-5 flex-1 flex flex-col">
-                            <h4 class="text-lg font-black text-slate-900 mb-2 flex items-center gap-2">
-                                <span class="w-1.5 h-5 bg-amber-600 rounded-full shrink-0"></span>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-brand-dark mb-2.5 flex items-center gap-2">
+                                <span class="w-2 h-5 bg-brand-blue rounded-sm inline-block shrink-0"></span>
                                 <span>ミニキャノンボーイ</span>
                             </h4>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-1">
-                                <!-- 【編集用】ここに「ミニキャノンボーイ」の説明文を入力してください -->
+                            <p class="text-sm text-gray-700 leading-relaxed flex-1">
                                 角度とパワーを見極めてターゲットを打ち抜く砲撃ゲーム筐体です。（※説明文をここに入力）
                             </p>
                         </div>
                     </article>
 
-                    <!-- 筐体6：いきのこりゲーム -->
-                    <article class="bg-slate-50 rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col">
-                        <!-- 筐体画像エリア -->
-                        <div class="relative aspect-[4/3] bg-gradient-to-b from-teal-900 to-slate-900 p-3 flex items-center justify-center border-b-4 border-amber-500/80">
-                            <img src="https://placehold.co/600x450/1A535C/F5E6C4?text=いきのこりゲーム+画像枠" 
-                                 alt="いきのこりゲーム 筐体画像" 
-                                 class="w-full h-full object-cover rounded-xl border border-white/20">
-                            <span class="absolute top-5 left-5 px-2.5 py-0.5 rounded-md bg-slate-950/75 text-amber-300 text-[11px] font-bold tracking-wider backdrop-blur-xs">
+                    <!-- 6. いきのこりゲーム -->
+                    <article class="bg-white rounded-2xl border-2 border-brand-dark shadow-hard overflow-hidden flex flex-col">
+                        <div class="relative aspect-[4/3] bg-brand-light border-b-2 border-brand-dark overflow-hidden">
+                            <img src="https://placehold.co/600x450/1A535C/F5E6C4?text=いきのこりゲーム+画像枠" alt="いきのこりゲーム 筐体画像" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-brand-dark text-white font-display font-bold text-xs px-2.5 py-1 rounded">
                                 NO.06
                             </span>
                         </div>
-                        <!-- 筐体タイトル・説明文エリア -->
-                        <div class="p-5 flex-1 flex flex-col">
-                            <h4 class="text-lg font-black text-slate-900 mb-2 flex items-center gap-2">
-                                <span class="w-1.5 h-5 bg-teal-600 rounded-full shrink-0"></span>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-brand-dark mb-2.5 flex items-center gap-2">
+                                <span class="w-2 h-5 bg-brand-blue rounded-sm inline-block shrink-0"></span>
                                 <span>いきのこりゲーム</span>
                             </h4>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-1">
-                                <!-- 【編集用】ここに「いきのこりゲーム」の説明文を入力してください -->
+                            <p class="text-sm text-gray-700 leading-relaxed flex-1">
                                 緊張感あふれるサバイバルルールのレトロ筐体です。（※説明文をここに入力）
                             </p>
                         </div>
                     </article>
 
-                    <!-- 筐体7：SOCCERBALL -->
-                    <article class="bg-slate-50 rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col">
-                        <!-- 筐体画像エリア -->
-                        <div class="relative aspect-[4/3] bg-gradient-to-b from-green-900 to-slate-900 p-3 flex items-center justify-center border-b-4 border-amber-500/80">
-                            <img src="https://placehold.co/600x450/1E6B34/F5E6C4?text=SOCCERBALL+画像枠" 
-                                 alt="SOCCERBALL 筐体画像" 
-                                 class="w-full h-full object-cover rounded-xl border border-white/20">
-                            <span class="absolute top-5 left-5 px-2.5 py-0.5 rounded-md bg-slate-950/75 text-amber-300 text-[11px] font-bold tracking-wider backdrop-blur-xs">
+                    <!-- 7. SOCCERBALL -->
+                    <article class="bg-white rounded-2xl border-2 border-brand-dark shadow-hard overflow-hidden flex flex-col">
+                        <div class="relative aspect-[4/3] bg-brand-light border-b-2 border-brand-dark overflow-hidden">
+                            <img src="https://placehold.co/600x450/1E6B34/F5E6C4?text=SOCCERBALL+画像枠" alt="SOCCERBALL 筐体画像" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-brand-dark text-white font-display font-bold text-xs px-2.5 py-1 rounded">
                                 NO.07
                             </span>
                         </div>
-                        <!-- 筐体タイトル・説明文エリア -->
-                        <div class="p-5 flex-1 flex flex-col">
-                            <h4 class="text-lg font-black text-slate-900 mb-2 flex items-center gap-2">
-                                <span class="w-1.5 h-5 bg-green-600 rounded-full shrink-0"></span>
+                        <div class="p-5 sm:p-6 flex-1 flex flex-col">
+                            <h4 class="text-lg font-black text-brand-dark mb-2.5 flex items-center gap-2">
+                                <span class="w-2 h-5 bg-brand-blue rounded-sm inline-block shrink-0"></span>
                                 <span>SOCCERBALL</span>
                             </h4>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-1">
-                                <!-- 【編集用】ここに「SOCCERBALL」の説明文を入力してください -->
+                            <p class="text-sm text-gray-700 leading-relaxed flex-1">
                                 華麗なパスとシュートでゴールネットを揺らすサッカーゲーム筐体です。（※説明文をここに入力）
                             </p>
                         </div>
                     </article>
 
-                    <!--
-                    ====================================================================
-                    【追加用テンプレート】新しい筐体を増やす場合は以下のブロックをコピーして
-                    コメントアウトを外し、画像・タイトル・説明文を書き換えてください。
-                    ====================================================================
-                    <article class="bg-slate-50 rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col">
-                        <div class="relative aspect-[4/3] bg-gradient-to-b from-slate-800 to-slate-900 p-3 flex items-center justify-center border-b-4 border-amber-500/80">
-                            <img src="https://placehold.co/600x450/334155/F5E6C4?text=新筐体+画像枠" 
-                                 alt="新筐体 筐体画像" 
-                                 class="w-full h-full object-cover rounded-xl border border-white/20">
-                            <span class="absolute top-5 left-5 px-2.5 py-0.5 rounded-md bg-slate-950/75 text-amber-300 text-[11px] font-bold tracking-wider backdrop-blur-xs">
-                                NO.08
-                            </span>
-                        </div>
-                        <div class="p-5 flex-1 flex flex-col">
-                            <h4 class="text-lg font-black text-slate-900 mb-2 flex items-center gap-2">
-                                <span class="w-1.5 h-5 bg-brand-blue rounded-full shrink-0"></span>
-                                <span>新しい筐体タイトル</span>
-                            </h4>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-1">
-                                ここに新しい筐体の説明文を入力してください。
-                            </p>
-                        </div>
-                    </article>
-                    -->
-
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== 4. ABOUT（スタジオ概要） ==================== -->
-    <section id="about" class="py-16 sm:py-24 bg-slate-50 border-t border-slate-200/70">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- About Section -->
+    <section id="about" class="py-16 sm:py-24 bg-brand-light border-b-2 border-brand-dark">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <span class="text-brand-blue font-extrabold text-xs sm:text-sm tracking-widest uppercase">STUDIO PROFILE</span>
-                <h2 class="text-2xl sm:text-4xl font-black text-slate-900 mt-1">ABOUT（スタジオ概要）</h2>
-                <div class="w-16 h-1.5 mx-auto mt-4 rounded-full overflow-hidden flex">
-                    <div class="w-1/2 bg-brand-blue"></div>
-                    <div class="w-1/2 bg-slate-300"></div>
+                <span class="font-display font-extrabold text-brand-blue tracking-widest text-xs sm:text-sm uppercase block mb-2">STUDIO PROFILE</span>
+                <h2 class="text-2xl sm:text-4xl font-black text-brand-dark">ABOUT（スタジオ概要）</h2>
+                <div class="mt-4 flex justify-center items-center gap-1.5">
+                    <div class="w-8 h-1.5 bg-brand-blue rounded-full"></div>
+                    <div class="w-3 h-1.5 bg-brand-dark rounded-full"></div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200/80">
-                <div class="flex flex-col md:flex-row items-center gap-8 pb-8 mb-8 border-b border-slate-100">
-                    <div class="w-full md:w-1/3 flex justify-center bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                        <img src="/images/borderLine_Logo00.png" 
-                             alt="Border Line スタジオロゴ" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/240x60/587AC2/ffffff?text=Border+Line';"
-                             class="h-12 sm:h-14 w-auto object-contain">
+            <div class="bg-white rounded-2xl border-2 border-brand-dark shadow-hard-lg p-6 sm:p-10">
+                <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8 pb-8 mb-8 border-b-2 border-dashed border-gray-300">
+                    <div class="w-48 sm:w-56 shrink-0 flex justify-center p-4 bg-brand-light rounded-xl border-2 border-brand-dark">
+                        <img src="/images/borderLine_Logo00.png" alt="Border Line スタジオロゴ" class="w-full h-auto object-contain">
                     </div>
-                    <div class="w-full md:w-2/3 text-center md:text-left">
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-lg sm:text-xl font-black text-brand-dark mb-3">
                             シンプルで奥深い「遊びの体験」を届ける
                         </h3>
-                        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
                             Border Line（ボーダーラインスタジオ / Borderline Studio）は、誰もが直感的にルールを理解でき、思わず何度も挑戦したくなるスマートフォン向けゲーム・エンターテインメントアプリの企画・開発・運営を行っています。
                         </p>
                     </div>
                 </div>
 
-                <!-- 会社・スタジオ情報テーブル -->
-                <div class="grid grid-cols-1 divide-y divide-slate-100 text-sm sm:text-base">
+                <!-- Company Info Table -->
+                <div class="divide-y divide-gray-200 text-sm sm:text-base">
                     <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
-                        <div class="font-bold text-slate-500">スタジオ名 / 屋号</div>
-                        <div class="sm:col-span-2 font-bold text-slate-900">Border Line（ボーダーラインスタジオ / Borderline Studio）</div>
+                        <div class="font-bold text-brand-dark">スタジオ名 / 屋号</div>
+                        <div class="sm:col-span-2 text-gray-700 font-medium">Border Line（ボーダーラインスタジオ / Borderline Studio）</div>
                     </div>
                     <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
-                        <div class="font-bold text-slate-500">事業内容</div>
-                        <div class="sm:col-span-2 text-slate-800">
+                        <div class="font-bold text-brand-dark">事業内容</div>
+                        <div class="sm:col-span-2 text-gray-700">
                             スマートフォン向けゲーム・エンターテインメントアプリの企画、開発、運営および配信
                         </div>
                     </div>
                     <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
-                        <div class="font-bold text-slate-500">配信プラットフォーム</div>
-                        <div class="sm:col-span-2 text-slate-800">Google Play Store</div>
-                    </div>
-                    <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4">
-                        <div class="font-bold text-slate-500">プライバシーポリシー</div>
-                        <div class="sm:col-span-2">
-                            <a href="#privacy" class="inline-flex items-center gap-1.5 text-brand-blue hover:text-brand-darkBlue font-semibold underline underline-offset-4">
-                                <span>本ページ下部「プライバシーポリシー」に記載</span>
-                                <i class="fa-solid fa-arrow-down text-xs"></i>
+                        <div class="font-bold text-brand-dark">配信プラットフォーム</div>
+                        <div class="sm:col-span-2 text-gray-700">
+                            <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-brand-blue font-bold hover:underline">
+                                <i class="fa-brands fa-google-play"></i>
+                                <span>Google Play ストア</span>
                             </a>
                         </div>
                     </div>
@@ -546,259 +413,162 @@
         </div>
     </section>
 
-    <!-- ==================== 5. PRIVACY POLICY（プライバシーポリシー全文） ==================== -->
-    <section id="privacy" class="py-16 sm:py-24 bg-white border-t border-slate-200/70">
+    <!-- Privacy Policy Section -->
+    <section id="privacy" class="py-16 sm:py-24 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <span class="text-brand-blue font-extrabold text-xs sm:text-sm tracking-widest uppercase">PRIVACY POLICY</span>
-                <h2 class="text-2xl sm:text-4xl font-black text-slate-900 mt-1">プライバシーポリシー</h2>
-                <div class="w-16 h-1.5 mx-auto mt-4 rounded-full overflow-hidden flex">
-                    <div class="w-1/2 bg-brand-blue"></div>
-                    <div class="w-1/2 bg-slate-300"></div>
+            <div class="text-center mb-10 sm:mb-12">
+                <span class="font-display font-extrabold text-brand-blue tracking-widest text-xs sm:text-sm uppercase block mb-2">PRIVACY POLICY</span>
+                <h2 class="text-2xl sm:text-4xl font-black text-brand-dark">プライバシーポリシー</h2>
+                <div class="mt-4 flex justify-center items-center gap-1.5">
+                    <div class="w-8 h-1.5 bg-brand-blue rounded-full"></div>
+                    <div class="w-3 h-1.5 bg-brand-dark rounded-full"></div>
                 </div>
             </div>
 
-            <!-- プライバシーポリシー本文コンテナ（全文表示） -->
-            <article class="bg-slate-50 rounded-3xl p-6 sm:p-10 lg:p-12 border border-slate-200/90 shadow-xs text-slate-700 space-y-8 leading-relaxed">
-                <!-- 前文 -->
-                <div class="pb-6 border-b border-slate-200/80">
-                    <p class="text-sm sm:text-base">
-                        Border Line（Borderline Studio）（以下、「当スタジオ」といいます）は、当スタジオが提供するスマートフォン向けアプリケーション『昭和レトロ 10円ゲームコーナー』（以下、「本アプリ」といいます）における利用者情報の取り扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます）を定めます。
-                    </p>
+            <!-- Policy Document Box -->
+            <div class="bg-brand-light rounded-2xl border-2 border-brand-dark shadow-hard-lg p-6 sm:p-10">
+                <div class="border-b-2 border-brand-dark pb-5 mb-7 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-bold text-brand-blue block mb-1">APPLICATION PRIVACY POLICY</span>
+                        <h3 class="text-lg sm:text-xl font-black text-brand-dark">
+                            アプリケーション・プライバシーポリシー
+                        </h3>
+                    </div>
+                    <span class="inline-block self-start sm:self-auto px-3 py-1 bg-white border border-brand-dark rounded text-xs font-bold text-brand-dark">
+                        Border Line（ボーダーラインスタジオ）
+                    </span>
                 </div>
 
-                <!-- 第1条 -->
-                <section class="space-y-3">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-3">
-                        <span class="w-7 h-7 rounded-full bg-brand-blue text-white text-xs sm:text-sm flex items-center justify-center font-bold shrink-0">1</span>
-                        <span>収集する利用者情報および収集方法</span>
-                    </h3>
-                    <div class="pl-0 sm:pl-10 space-y-2 text-sm sm:text-base text-slate-600">
-                        <p>
-                            本アプリでは、サービスの提供、利便性の向上、不具合の調査および広告配信の最適化を目的として、以下の利用者情報を自動的に取得する場合があります。なお、氏名、住所、電話番号、メールアドレス等の個人を直接特定できる情報は、ユーザーからのお問い合わせ時を除き収集いたしません。
+                <div class="space-y-7 text-sm sm:text-base text-gray-800 leading-relaxed">
+                    <p>
+                        Border Line（ボーダーラインスタジオ、以下「当スタジオ」といいます）は、当スタジオが提供するスマートフォン用アプリケーション（以下「本アプリ」といいます）におけるユーザー情報の取り扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます）を定め、適切な保護と管理に努めます。
+                    </p>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-300">
+                        <h4 class="font-bold text-brand-dark text-base sm:text-lg mb-2 flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-brand-blue text-white text-xs font-display">1</span>
+                            <span>取得する情報および利用目的</span>
+                        </h4>
+                        <p class="mb-3">
+                            本アプリでは、サービスの提供・維持・改善および広告配信のため、以下の情報を自動的に取得・利用する場合があります。なお、氏名・住所・電話番号など個人を直接特定できる情報は収集いたしません。
                         </p>
-                        <ul class="list-disc list-inside space-y-1.5 bg-white p-4 rounded-2xl border border-slate-200/70 text-slate-700">
-                            <li>端末情報（OSの種類およびバージョン、機種名、画面サイズ、言語設定など）</li>
-                            <li>広告識別子（Google Advertising ID 等）</li>
-                            <li>アプリの利用状況、プレイデータ、クラッシュログ等の匿名統計データ</li>
+                        <ul class="list-disc pl-5 space-y-1.5 text-gray-700">
+                            <li>端末情報（OSのバージョン、機種名、言語設定、広告識別子（Advertising ID）等）</li>
+                            <li>アプリの利用状況（プレイ履歴、スコアデータ、クラッシュログ、エラー発生状況等）</li>
+                            <li>お問い合わせ時にユーザーご自身が送信された情報（メールアドレス、お問い合わせ内容等）</li>
                         </ul>
                     </div>
-                </section>
 
-                <!-- 第2条 -->
-                <section class="space-y-3">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-3">
-                        <span class="w-7 h-7 rounded-full bg-brand-blue text-white text-xs sm:text-sm flex items-center justify-center font-bold shrink-0">2</span>
-                        <span>広告配信モジュールの利用について（Google AdMob 等）</span>
-                    </h3>
-                    <div class="pl-0 sm:pl-10 space-y-2 text-sm sm:text-base text-slate-600">
-                        <p>
-                            本アプリでは、第三者配信の広告サービスとして <strong>Google AdMob（Google Inc.）</strong> 等の広告配信モジュールを利用しています。広告配信事業者は、ユーザーの興味に応じた適切な広告を表示するため、Cookie や端末の広告識別子等の情報を自動的に取得・利用する場合があります。
+                    <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-300">
+                        <h4 class="font-bold text-brand-dark text-base sm:text-lg mb-2 flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-brand-blue text-white text-xs font-display">2</span>
+                            <span>広告配信および第三者モジュールの利用について</span>
+                        </h4>
+                        <p class="mb-3">
+                            本アプリでは、第三者配信の広告サービス（Google AdMob 等）および利用状況解析ツールを利用する場合があります。これらの広告配信事業者等は、ユーザーの興味に応じた広告を表示するため、Cookie や端末の広告識別子等を使用することがあります。
                         </p>
-                        <p>
-                            広告配信事業者が取得する情報の詳細、利用目的、第三者への提供等につきましては、各広告配信事業者のプライバシーポリシーをご確認ください。また、ユーザーはご自身の端末の設定画面から広告のパーソナライズを無効にすることができます。
-                        </p>
-                        <div class="pt-1">
-                            <a href="https://policies.google.com/technologies/ads?hl=ja" 
-                               target="_blank" 
-                               rel="noopener noreferrer" 
-                               class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-brand-blue hover:text-brand-darkBlue font-semibold underline underline-offset-4">
-                                <span>Google 広告に関するポリシーと規約（外部サイト）</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 第3条 -->
-                <section class="space-y-3">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-3">
-                        <span class="w-7 h-7 rounded-full bg-brand-blue text-white text-xs sm:text-sm flex items-center justify-center font-bold shrink-0">3</span>
-                        <span>利用者情報の利用目的</span>
-                    </h3>
-                    <div class="pl-0 sm:pl-10 space-y-2 text-sm sm:text-base text-slate-600">
-                        <p>
-                            当スタジオが取得した利用者情報は、以下の目的のために利用いたします。
-                        </p>
-                        <ul class="list-disc list-inside space-y-1.5 bg-white p-4 rounded-2xl border border-slate-200/70 text-slate-700">
-                            <li>本アプリの正常な動作の提供、品質向上および新機能開発のため</li>
-                            <li>不具合・クラッシュの原因調査および修正のため</li>
-                            <li>本アプリの利用状況に関する統計データの作成・分析のため</li>
-                            <li>ユーザーの興味・関心に応じた広告の配信および効果測定のため</li>
-                            <li>ユーザーからのお問い合わせに対応するため</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- 第4条 -->
-                <section class="space-y-3">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-3">
-                        <span class="w-7 h-7 rounded-full bg-brand-blue text-white text-xs sm:text-sm flex items-center justify-center font-bold shrink-0">4</span>
-                        <span>個人情報の第三者への開示・提供の禁止</span>
-                    </h3>
-                    <div class="pl-0 sm:pl-10 space-y-2 text-sm sm:text-base text-slate-600">
-                        <p>
-                            当スタジオは、ユーザーよりお預かりした個人情報を適切に管理し、次のいずれかに該当する場合を除き、ご本人の同意なく個人情報を第三者に開示または提供いたしません。
-                        </p>
-                        <ul class="list-disc list-inside space-y-1 text-slate-600">
-                            <li>法令に基づき開示することが必要である場合</li>
-                            <li>人の生命、身体または財産の保護のために必要がある場合であって、ご本人の同意を得ることが困難である場合</li>
-                            <li>利用目的の達成に必要な範囲内において、業務を委託する場合</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- 第5条 -->
-                <section class="space-y-3">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-3">
-                        <span class="w-7 h-7 rounded-full bg-brand-blue text-white text-xs sm:text-sm flex items-center justify-center font-bold shrink-0">5</span>
-                        <span>免責事項</span>
-                    </h3>
-                    <div class="pl-0 sm:pl-10 space-y-2 text-sm sm:text-base text-slate-600">
-                        <p>
-                            当スタジオは、本アプリがユーザーの特定の目的に適合すること、期待する機能・正確性・有用性を有すること、および不具合やバグが完全に存在しないことを保証するものではありません。
-                        </p>
-                        <p>
-                            本アプリの利用または利用不能によってユーザーまたは第三者に生じたあらゆる損害（端末の故障、データの消失、通信料の発生等を含みますがこれらに限りません）について、当スタジオは一切の責任を負いかねますのであらかじめご了承ください。
+                        <p class="text-xs sm:text-sm text-gray-600">
+                            ※ Google による広告におけるデータの取り扱いおよびパーソナライズ広告の無効化（オプトアウト）方法については、Google のポリシーと規約（<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer" class="text-brand-blue underline hover:text-brand-accent">https://policies.google.com/technologies/ads</a>）をご確認ください。
                         </p>
                     </div>
-                </section>
 
-                <!-- 第6条 -->
-                <section class="space-y-3">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-3">
-                        <span class="w-7 h-7 rounded-full bg-brand-blue text-white text-xs sm:text-sm flex items-center justify-center font-bold shrink-0">6</span>
-                        <span>プライバシーポリシーの変更</span>
-                    </h3>
-                    <div class="pl-0 sm:pl-10 space-y-2 text-sm sm:text-base text-slate-600">
+                    <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-300">
+                        <h4 class="font-bold text-brand-dark text-base sm:text-lg mb-2 flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-brand-blue text-white text-xs font-display">3</span>
+                            <span>個人情報の第三者への提供</span>
+                        </h4>
                         <p>
-                            当スタジオは、法令の改正、社会情勢の変化、または本アプリのサービス内容の変更等に伴い、本ポリシーの内容を適宜見直し、予告なく改定することがあります。変更後のプライバシーポリシーは、本ページに掲載された時点から効力を生じるものとします。
+                            当スタジオは、法令に基づく場合や人の生命・身体・財産の保護のために必要がある場合を除き、ユーザーの同意なく取得した情報を第三者に開示・提供することはありません。
                         </p>
                     </div>
-                </section>
 
-                <!-- 第7条 -->
-                <section class="space-y-3">
-                    <h3 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-3">
-                        <span class="w-7 h-7 rounded-full bg-brand-blue text-white text-xs sm:text-sm flex items-center justify-center font-bold shrink-0">7</span>
-                        <span>お問い合わせ窓口</span>
-                    </h3>
-                    <div class="pl-0 sm:pl-10 space-y-2 text-sm sm:text-base text-slate-600">
+                    <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-300">
+                        <h4 class="font-bold text-brand-dark text-base sm:text-lg mb-2 flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-brand-blue text-white text-xs font-display">4</span>
+                            <span>情報の安全管理</span>
+                        </h4>
                         <p>
-                            本ポリシーおよび本アプリにおける利用者情報の取り扱いに関するご質問・お問い合わせは、Google Play ストア内のデベロッパー連絡先よりご連絡ください。
+                            当スタジオは、取得した情報の漏えい、滅失または毀損の防止その他の安全管理のために、必要かつ適切な措置を講じます。
                         </p>
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200/80 text-xs sm:text-sm space-y-1">
-                            <p class="font-bold text-slate-900">運営者：Border Line（Borderline Studio）</p>
-                            <p class="text-slate-600">
-                                対象アプリ：
-                                <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" 
-                                   target="_blank" 
-                                   rel="noopener noreferrer" 
-                                   class="text-brand-blue hover:text-brand-darkBlue font-semibold underline underline-offset-4">
-                                    昭和レトロ 10円ゲームコーナー（Google Play ストア）
-                                </a>
-                            </p>
-                        </div>
                     </div>
-                </section>
-            </article>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-300">
+                        <h4 class="font-bold text-brand-dark text-base sm:text-lg mb-2 flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-brand-blue text-white text-xs font-display">5</span>
+                            <span>免責事項</span>
+                        </h4>
+                        <p>
+                            本アプリがユーザーの特定の目的に適合すること、期待する機能・正確性・有用性を有すること、および不具合が生じないことについて、当スタジオは何ら保証するものではありません。本アプリの利用により生じた損害について、当スタジオは一切の責任を負いかねますのであらかじめご了承ください。
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-300">
+                        <h4 class="font-bold text-brand-dark text-base sm:text-lg mb-2 flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-brand-blue text-white text-xs font-display">6</span>
+                            <span>プライバシーポリシーの変更</span>
+                        </h4>
+                        <p>
+                            当スタジオは、法令の改正や本アプリの機能追加・仕様変更等に伴い、本ポリシーの内容を予告なく改定することがあります。変更後のプライバシーポリシーは、本ページに掲載した時点から効力を生じるものとします。
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-300">
+                        <h4 class="font-bold text-brand-dark text-base sm:text-lg mb-2 flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded bg-brand-blue text-white text-xs font-display">7</span>
+                            <span>お問い合わせ窓口</span>
+                        </h4>
+                        <p>
+                            本ポリシーまたは本アプリに関するお問い合わせは、Google Play ストアの各アプリ配信ページに記載のデベロッパー連絡先（メールアドレス）までご連絡ください。
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ==================== 6. フッター ==================== -->
-    <footer class="bg-slate-900 text-slate-300 pt-14 pb-10 border-t-4 border-brand-blue">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-slate-800">
-                <!-- ロゴ・ブランド説明 -->
-                <div class="md:col-span-5">
-                    <div class="inline-block bg-white px-4 py-2.5 rounded-xl mb-4">
-                        <img src="/images/borderLine_Logo00.png" 
-                             alt="Border Line ロゴ" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/200x48/587AC2/ffffff?text=Border+Line';"
-                             class="h-8 w-auto object-contain">
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white border-t-2 border-brand-dark">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-white/15">
+                <div class="flex flex-col items-center md:items-start gap-3">
+                    <div class="bg-white px-3.5 py-2 rounded-lg inline-block">
+                        <img src="/images/borderLine_Logo00.png" alt="Border Line" class="h-7 w-auto object-contain">
                     </div>
-                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
-                        Border Line（Borderline Studio）<br>
-                        日常のなかにちょっとした楽しさと懐かしさを届けるスマートフォンアプリ制作スタジオ。
+                    <p class="text-xs text-gray-400">
+                        Border Line（ボーダーラインスタジオ / Borderline Studio）
                     </p>
                 </div>
 
-                <!-- サイト内リンク -->
-                <div class="md:col-span-3">
-                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">NAVIGATION</h4>
-                    <ul class="space-y-2.5 text-sm">
-                        <li><a href="#apps" class="hover:text-white transition-colors">APPS（アプリ紹介）</a></li>
-                        <li><a href="#about" class="hover:text-white transition-colors">ABOUT（スタジオ概要）</a></li>
-                        <li><a href="#privacy" class="hover:text-white transition-colors">PRIVACY POLICY</a></li>
-                    </ul>
-                </div>
-
-                <!-- 外部リンク -->
-                <div class="md:col-span-4">
-                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">OFFICIAL LINKS</h4>
-                    <ul class="space-y-3 text-sm">
-                        <li>
-                            <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors">
-                                <i class="fa-brands fa-google-play text-emerald-400"></i>
-                                <span>昭和レトロ 10円ゲームコーナー (Google Play)</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#privacy" class="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors">
-                                <i class="fa-solid fa-file-shield text-brand-blue"></i>
-                                <span>プライバシーポリシー</span>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-bold">
+                    <a href="#apps" class="text-gray-300 hover:text-white transition-colors">APPS（アプリ紹介）</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">ABOUT（スタジオ概要）</a>
+                    <a href="#privacy" class="text-gray-300 hover:text-white transition-colors">プライバシーポリシー</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.BorderlineStudio.TenCoinGameCorner" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors">Google Play</a>
                 </div>
             </div>
 
-            <!-- コピーライト -->
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-                <p>&copy; Border Line / Borderline Studio. All Rights Reserved.</p>
-                <a href="#" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors">
-                    <span>PAGE TOP</span>
-                    <i class="fa-solid fa-arrow-up"></i>
-                </a>
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-400">
+                <p>&copy; <span id="current-year"></span> Border Line / Borderline Studio. All Rights Reserved.</p>
+                <p>Google Play および Google Play ロゴは、Google LLC の商標です。</p>
             </div>
         </div>
     </footer>
 
-    <!-- インタラクション用JavaScript -->
+    <!-- Minimal Script for Mobile Menu & Year -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // モバイルメニュー開閉処理
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    const isHidden = mobileMenu.classList.contains('hidden');
-                    if (isHidden) {
-                        mobileMenu.classList.remove('hidden');
-                        menuIcon.classList.remove('fa-bars');
-                        menuIcon.classList.add('fa-xmark');
-                    } else {
-                        mobileMenu.classList.add('hidden');
-                        menuIcon.classList.remove('fa-xmark');
-                        menuIcon.classList.add('fa-bars');
-                    }
-                });
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-                // リンククリック時にメニューを閉じる
-                mobileNavLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                        menuIcon.classList.remove('fa-xmark');
-                        menuIcon.classList.add('fa-bars');
-                    });
-                });
-            }
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
     </script>
 </body>
